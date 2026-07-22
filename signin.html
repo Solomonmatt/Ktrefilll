@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./ktrefill-theme/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html"><img src="./ktrefill-theme/images/logo.svg" alt="KT Refill Logo" class="logo-img"></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container cta-card">
+          <div>
+            <p class="eyebrow">Sign In</p>
+            <h2>SignIn</h2>
+            <p>Keep me signed in and access your dashboard, orders, and wallet history.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <form class="service-form" id="signin-form">
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label class="form-field">
+                <span>Password</span>
+                <input type="password" name="password" placeholder="Enter your password" required />
+              </label>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+            <div class="status-message"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="./ktrefill-theme/script.js"></script>
+  </body>
+</html>

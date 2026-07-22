@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Airtime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./ktrefill-theme/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html"><img src="./ktrefill-theme/images/logo.svg" alt="KT Refill Logo" class="logo-img"></a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./buy-airtime.html">Buy Airtime</a></li>
+            <li><a href="./buy-gift-card.html">Buy GiftCard</a></li>
+            <li><a href="./physical-sim.html">Physical sim card</a></li>
+            <li><a href="./carrier-esim.html">Carrier ESIM</a></li>
+            <li><a href="./order-tracking.html">Order Tracking</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="./signin.html" class="account-link" aria-label="Sign in to your account">...</a>
+          <a href="#" class="cart-link" aria-label="Shopping cart">...</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container cta-card">
+          <div>
+            <p class="eyebrow">Top Up</p>
+            <h2>Buy Airtime</h2>
+            <p>Enter the mobile number you want to top up.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <form class="service-form" id="airtime-form" data-service="airtime">
+            <div class="form-grid">
+              <label class="form-field">
+                <span>1 COUNTRY</span>
+                <select name="country" required>
+                  <option value="">Select country</option>
+                  <option>Ghana</option>
+                  <option>Nigeria</option>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                </select>
+              </label>
+              <label class="form-field">
+                <span>2 OPERATOR</span>
+                <select name="operator" required>
+                  <option value="">Select operator</option>
+                </select>
+              </label>
+              <label class="form-field">
+                <span>3 TYPE</span>
+                <select name="type" required>
+                  <option value="">Select type</option>
+                  <option>Data</option>
+                  <option>Voice</option>
+                  <option>Bundle</option>
+                </select>
+              </label>
+              <label class="form-field">
+                <span>4 PAY</span>
+                <select name="paymentMethod" required>
+                  <option value="">Choose payment</option>
+                  <option>Wallet</option>
+                  <option>Card</option>
+                  <option>Bank Transfer</option>
+                </select>
+              </label>
+              <label class="form-field">
+                <span>Amount</span>
+                <input type="number" name="amount" placeholder="Enter amount" min="1" required />
+              </label>
+              <label class="form-field" style="grid-column: 1 / -1;">
+                <span>Enter Phone Number</span>
+                <input type="text" name="phone" placeholder="Enter the number without the country code" required />
+              </label>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="submit">Continue →</button>
+            </div>
+            <div class="status-message"></div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container feature-grid">
+          <article class="feature-card">
+            <h3>160+ countries</h3>
+            <p>Reach mobile users across global destinations with premium coverage.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Secure checkout</h3>
+            <p>Your payment is protected and processed through the platform checkout.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Instant delivery</h3>
+            <p>Top-ups and transfers are completed quickly for a smooth customer experience.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="./ktrefill-theme/script.js"></script>
+  </body>
+</html>
