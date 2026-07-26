@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eSIM Plan Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./ktrefill-theme/style.css?v=20260726" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html"><img src="./ktrefill-theme/images/logo.webp" alt="KT Refill Logo" class="logo-img"></a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./buy-airtime.html">Buy Airtime</a></li>
+            <li><a href="./buy-gift-card.html">Buy GiftCard</a></li>
+            <li><a href="./physical-sim.html">Physical sim card</a></li>
+            <li><a href="./carrier-esim.html">Carrier ESIM</a></li>
+            <li><a href="./order-tracking.html">Order Tracking</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <a href="./signin.html" class="account-link" aria-label="Sign in to your account">
+            <svg class="account-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21a8 8 0 0 0-16 0"></path>
+              <circle cx="12" cy="8" r="4"></circle>
+            </svg>
+          </a>
+          <a href="./cart.html" class="cart-link" aria-label="Shopping cart">
+            <svg class="cart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="esim-details-panel" id="esim-details-root">
+            <div class="carrier-summary-grid">
+              <div class="carrier-card">
+                <div class="carrier-card-image">
+                  <img id="esim-carrier-image" src="https://ktrefill.com/wp-content/uploads/2026/01/file_00000000d3087246a619146aedf55cec.png" alt="Selected eSIM carrier" loading="lazy" decoding="async" />
+                </div>
+                <div>
+                  <span>Carrier</span>
+                  <strong id="esim-carrier-name">No carrier selected</strong>
+                  <p id="esim-carrier-country">Select a carrier from the previous page</p>
+                </div>
+              </div>
+              <div class="carrier-info-card">
+                <h3 id="esim-carrier-heading">Choose a carrier to continue</h3>
+                <p id="esim-carrier-description">Select an eSIM carrier from the catalog page. Your chosen carrier details and plan options will appear here.</p>
+                <p id="esim-carrier-note">Plans and coverage vary by carrier. We recommend reviewing your device compatibility before ordering.</p>
+                <p>For inquiries, bulk orders, or activation assistance, contact our support team: <a href="https://ktrefill.com/contact" target="_blank" rel="noreferrer">ktrefill Support</a></p>
+                <p class="muted-note">Disclaimer: Features, pricing, and terms may change at any time and are subject to the carrier's policies and conditions.</p>
+              </div>
+            </div>
+
+            <div class="info-banner">
+              <span>⏱️</span>
+              <strong>Processing Time:</strong> After payment, your eSIM will be activated within <strong>10-20 minutes</strong>. You'll receive instructions via your preferred contact method.
+            </div>
+
+            <div class="selected-summary-card">
+              <div class="selected-summary-header">
+                <span class="product-tag" id="esim-details-badge">eSIM offer</span>
+                <h3 id="esim-details-offer-name">USA Lyca eSIM</h3>
+                <p id="esim-details-offer-meta">United States · Lyca Mobile</p>
+              </div>
+              <div class="selected-summary-body">
+                <div class="selected-summary-image">
+                  <img id="esim-details-image" src="https://ktrefill.com/wp-content/uploads/2026/06/Lycan-esim-image.png" alt="Selected eSIM" loading="lazy" decoding="async" />
+                </div>
+                <div class="selected-summary-values">
+                  <p><strong>Plan:</strong> <span id="esim-selected-plan">No plan selected</span></p>
+                  <p><strong>Price:</strong> <span id="esim-selected-price">Select a plan</span></p>
+                  <p class="old-price" id="esim-selected-old-price"></p>
+                </div>
+              </div>
+              <div class="status-message" id="esim-details-status"></div>
+            </div>
+
+            <div class="product-grid" id="esim-plan-options"></div>
+
+            <div class="section-head">
+              <p class="eyebrow">Your Information</p>
+              <h2>Activation information</h2>
+              <p>Fill in your contact and device details so we can complete the order.</p>
+            </div>
+            <form class="service-form esim-details-form" id="esim-details-form" data-service="esim">
+              <div class="form-grid">
+                <label class="form-field form-field--full">
+                  <span>Full Name</span>
+                  <input type="text" name="name" id="esim-name" placeholder="John Doe" required />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>Email address</span>
+                  <input type="email" name="email" id="esim-email" placeholder="you@example.com" required />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>Phone number</span>
+                  <input type="tel" name="phone" id="esim-phone" placeholder="+1 555 000 0000" required />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>Phone model</span>
+                  <select name="phoneModel" id="esim-phone-model" required>
+                    <option value="">Select your phone...</option>
+                    <optgroup label="Apple">
+                      <option>iPhone 15 Pro Max</option>
+                      <option>iPhone 15 Pro</option>
+                      <option>iPhone 15</option>
+                      <option>iPhone 14 Pro Max</option>
+                      <option>iPhone 14 Pro</option>
+                      <option>iPhone 14</option>
+                      <option>iPhone 13 Pro Max</option>
+                      <option>iPhone 13 Pro</option>
+                      <option>iPhone 13</option>
+                      <option>iPhone 12 Pro Max</option>
+                      <option>iPhone 12</option>
+                      <option>iPhone 11 Pro Max</option>
+                      <option>iPhone 11</option>
+                      <option>iPhone XR</option>
+                      <option>iPhone XS</option>
+                      <option>iPhone SE (2022)</option>
+                    </optgroup>
+                    <optgroup label="Samsung">
+                      <option>Galaxy S24 Ultra</option>
+                      <option>Galaxy S24+</option>
+                      <option>Galaxy S24</option>
+                      <option>Galaxy S23 Ultra</option>
+                      <option>Galaxy S23+</option>
+                      <option>Galaxy S23</option>
+                      <option>Galaxy S22 Ultra</option>
+                      <option>Galaxy S22+</option>
+                      <option>Galaxy Z Fold 5</option>
+                      <option>Galaxy Z Flip 5</option>
+                    </optgroup>
+                    <optgroup label="Google">
+                      <option>Pixel 8 Pro</option>
+                      <option>Pixel 8</option>
+                      <option>Pixel 7 Pro</option>
+                      <option>Pixel 7</option>
+                      <option>Pixel 6 Pro</option>
+                      <option>Pixel 6</option>
+                      <option>Pixel 5</option>
+                    </optgroup>
+                    <option>Other (type below)</option>
+                  </select>
+                </label>
+                <label class="form-field form-field--full">
+                  <span>Preferred contact</span>
+                  <div class="contact-toggle-group" id="esim-contact-toggle">
+                    <button type="button" class="contact-toggle active" data-contact="WhatsApp">📱 WhatsApp</button>
+                    <button type="button" class="contact-toggle" data-contact="Telegram">✈️ Telegram</button>
+                  </div>
+                  <input type="hidden" name="preferredContact" id="esim-contact-hidden" value="WhatsApp" />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>IMEI (optional)</span>
+                  <input type="text" name="imei" id="esim-imei" placeholder="Dial *#06# to get IMEI" />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>EID (optional)</span>
+                  <input type="text" name="eid" id="esim-eid" placeholder="32 digits" />
+                </label>
+              </div>
+
+              <div class="hero-actions">
+                <button type="button" class="btn btn-secondary" id="esim-details-back">Back</button>
+                <button type="button" class="btn btn-secondary" id="esim-details-clear">Clear</button>
+                <button type="submit" class="btn btn-primary" id="esim-details-add-to-cart">Add to cart</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./ktrefill-theme/script.js"></script>
+  </body>
+</html>
