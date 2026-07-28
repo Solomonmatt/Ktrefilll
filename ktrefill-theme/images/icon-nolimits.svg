@@ -1,8 +1,0 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- No Limits Icon -->
-  <circle cx="32" cy="32" r="30" fill="rgba(216, 165, 66, 0.1)" stroke="#d8a542" stroke-width="2"/>
-  <g transform="translate(14, 20)">
-    <!-- Infinity symbol -->
-    <path d="M 4 8 Q 1 5 4 2 Q 7 -1 10 2 Q 13 5 10 8 Q 16 14 22 8 Q 25 5 22 2 Q 19 -1 16 2 Q 13 5 16 8 Q 10 14 4 8" fill="none" stroke="#d8a542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-</svg>
