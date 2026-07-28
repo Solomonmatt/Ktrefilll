@@ -1,0 +1,1207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTRefill - International Airtime, eSIM & Gift Cards | Direct Top-Up 24/7</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            950: '#0a0a0a',
+                            900: '#111827',
+                            800: '#1f2937',
+                            600: '#374151'
+                        },
+                        'accent': {
+                            gold: '#fbbf24',
+                            orange: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --color-theme-950: #0b2f72;
+            --color-theme-900: #0d3e8b;
+            --color-theme-800: #1b5fd0;
+            --color-theme-700: #2468d9;
+            --color-theme-600: #2f7be0;
+            --color-accent-gold: #fbbf24;
+            --color-accent-orange: #f59e0b;
+        }
+        .bg-theme-950 { background-color: var(--color-theme-950); }
+        .bg-theme-900 { background-color: var(--color-theme-900); }
+        .bg-theme-800 { background-color: var(--color-theme-800); }
+        .bg-theme-700 { background-color: var(--color-theme-700); }
+        .bg-theme-600 { background-color: var(--color-theme-600); }
+        .bg-theme-900\/95 { background-color: rgba(13, 62, 139, 0.95); }
+        .bg-theme-900\/70 { background-color: rgba(13, 62, 139, 0.70); }
+        .bg-theme-900\/60 { background-color: rgba(13, 62, 139, 0.60); }
+        .bg-theme-900\/30 { background-color: rgba(13, 62, 139, 0.30); }
+        .bg-theme-900\/20 { background-color: rgba(13, 62, 139, 0.20); }
+        .bg-theme-gradient { background: linear-gradient(135deg, var(--color-theme-900) 0%, var(--color-theme-800) 50%, var(--color-theme-700) 100%); }
+        .surface-blue { background: rgba(13, 62, 139, 0.18); border: 1px solid rgba(255,255,255,0.08); }
+        .text-accent-gold { color: var(--color-accent-gold); }
+        .bg-accent-gold { background-color: var(--color-accent-gold); }
+        .bg-accent-orange { background-color: var(--color-accent-orange); }
+        .border-accent-gold { border-color: var(--color-accent-gold); }
+        .text-accent-orange { color: var(--color-accent-orange); }
+        .hover\:bg-accent-orange:hover { background-color: var(--color-accent-orange); }
+        .hover\:text-accent-orange:hover { color: var(--color-accent-orange); }
+        .shadow-accent-gold { box-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+        .hover\:shadow-accent-gold\/25:hover { box-shadow: 0 0 20px rgba(251, 191, 36, 0.25); }
+        .animate-pulse-slow { animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-spin-slow { animation: spinSlow 16s linear infinite; }
+        .orbit-stage { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: 0 auto; overflow: hidden; }
+        .orbit-stage::after { content: ""; position: absolute; top: 50%; left: 50%; width: 96%; height: 96%; transform: translate(-50%, -50%); border-radius: 9999px; background: radial-gradient(circle at center, rgba(96, 164, 255, 1) 0%, rgba(96, 164, 255, 0.55) 12%, rgba(96, 164, 255, 0.28) 24%, transparent 52%); filter: blur(34px); opacity: 1; pointer-events: none; z-index: 2; }
+        .orbit-starfield { position: absolute; inset: 0; border-radius: 9999px; background-size: 180%; background-position: center top; background-repeat: repeat; filter: brightness(1.35) saturate(1.2); box-shadow: inset 0 0 100px rgba(96, 164, 255, 0.28); animation: starfieldMove 30s linear infinite; }
+        .earth-core { position: absolute; top: 50%; left: 50%; width: 50%; max-width: 300px; height: auto; transform: translate(-50%, -50%) rotate(0deg); transform-origin: center center; object-fit: contain; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.35)); animation: rotateEarth 20s linear infinite; z-index: 3; }
+        .orbit-ring { position: absolute; top: 50%; left: 50%; width: 46%; height: 46%; transform: translate(-50%, -50%); border: 1px solid rgba(255,255,255,0.22); border-radius: 9999px; z-index: 4; }
+        .orbit-rotor { position: absolute; inset: 0; width: 100%; height: 100%; animation: spinSlow 16s linear infinite; pointer-events: none; }
+        .orbit-item { position: absolute; inset: 0; transform: rotate(var(--angle)); }
+        .orbit-item img { position: absolute; left: calc(100% - 32px); top: 50%; width: 64px; height: 64px; transform: translate(-50%, -50%); object-fit: contain; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.22), 0 6px 12px rgba(0, 0, 0, 0.18); border-radius: 18px; background: rgba(255,255,255,0.04); }
+        .orbit-rotor::before { content: ""; position: absolute; inset: 12%; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.28); box-shadow: 0 0 18px rgba(255,255,255,0.12); pointer-events: none; }
+        .orbit-counter, .orbit-product, .orbit-tooltip { display: none !important; }
+        .orbit-tooltip { position: absolute; bottom: -2.2rem; left: 50%; transform: translateX(-50%); font-size: 0.72rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.18em; white-space: nowrap; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes starfieldMove {
+            from { background-position: center top; }
+            to { background-position: center bottom; }
+        }
+        @keyframes rotateEarth {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        html {
+            min-height: 100%;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: white;
+            min-height: 100%;
+            background-image: linear-gradient(rgba(10, 16, 47, 0.80), rgba(10, 16, 47, 0.80)), url('https://img.magnific.com/free-vector/modern-techno-dotted-background-modern-designs_1017-44841.jpg?semt=ais_hybrid&w=740&q=80');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .carrier-marquee {
+            overflow: hidden;
+            position: relative;
+            height: 106px;
+            display: flex;
+            align-items: center;
+            padding: 0 0.75rem;
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+        .carrier-marquee-track {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            animation: carrierSlide 28s linear infinite;
+            will-change: transform;
+            width: max-content;
+        }
+        .carrier-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.6rem 0.9rem;
+            color: #f8fafc;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .carrier-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.18rem;
+            object-fit: contain;
+        }
+        .carrier-name {
+            display: inline-block;
+        }
+        .pay-marquee {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+            margin: 0 auto;
+        }
+        .pay-marquee-track {
+            display: flex;
+            gap: 0.75rem;
+            animation: paySlide 24s linear infinite;
+            align-items: center;
+            width: max-content;
+        }
+        .pay-marquee-track.right {
+            animation-direction: reverse;
+        }
+        .pay-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 9999px;
+            background: rgba(255,255,255,0.08);
+            color: #f8fafc;
+            padding: 0.75rem 1rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .pay-pill.crypto {
+            background: rgba(255,255,255,0.05);
+            align-items: center;
+        }
+        .pay-pill.crypto img {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            object-fit: contain;
+            display: block;
+        }
+        .pay-pill img.flag {
+            width: 24px;
+            height: 24px;
+            border-radius: 9999px;
+            object-fit: cover;
+            background: rgba(255,255,255,0.08);
+            padding: 0.15rem;
+        }
+        .payment-methods-row {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+        }
+        .pay-method {
+            min-width: 48px;
+            max-width: 96px;
+            padding: 0.35rem;
+            border-radius: 0.85rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+            flex: 0 0 auto;
+        }
+        .pay-method img {
+            display: block;
+            width: auto;
+            height: 24px;
+            max-height: 24px;
+        }
+        .pay-pill.crypto {
+            min-height: 40px;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out both;
+        }
+        @keyframes carrierSlide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @keyframes paySlide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-white font-sans overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-theme-900/40 backdrop-blur-md border-b border-white/10 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./ktrefill-theme/images/logo.webp" alt="KT Refill Logo" class="h-10 w-auto max-w-[180px] object-contain" />
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="./buy-airtime.html" class="text-gray-300 hover:text-white transition-colors font-medium">Buy Airtime</a>
+                    <a href="./buy-gift-card.html" class="text-gray-300 hover:text-white transition-colors font-medium">Buy GiftCard</a>
+                    <a href="./physical-sim.html" class="text-gray-300 hover:text-white transition-colors font-medium">Physical SIM</a>
+                    <a href="./carrier-esim.html" class="text-gray-300 hover:text-white transition-colors font-medium">Carrier eSIM</a>
+                    <a href="./order-tracking.html" class="text-gray-300 hover:text-white transition-colors font-medium">Order Tracking</a>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <a id="cart-button" href="./cart.html" class="relative text-white bg-white/10 hover:bg-white/20 px-2 sm:px-3 py-2 rounded-lg transition-all flex items-center gap-1 sm:gap-2 min-h-[44px]">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="hidden sm:inline text-xs">Cart</span>
+                        <span id="cart-count" class="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center">0</span>
+                    </a>
+                    <a href="./signin.html" class="account-link hidden sm:block bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-sm min-h-[44px] flex items-center">Sign In</a>
+                    <button class="md:hidden text-white text-2xl p-2 min-h-[44px] min-w-[44px]" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-theme-800/90 border-t border-white/10">
+            <div class="px-4 py-4 space-y-3">
+                <a href="./buy-airtime.html" class="block py-3 px-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors min-h-[44px] flex items-center">Buy Airtime</a>
+                <a href="./buy-gift-card.html" class="block py-3 px-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors min-h-[44px] flex items-center">Buy GiftCard</a>
+                <a href="./physical-sim.html" class="block py-3 px-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors min-h-[44px] flex items-center">Physical SIM</a>
+                <a href="./carrier-esim.html" class="block py-3 px-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors min-h-[44px] flex items-center">Carrier eSIM</a>
+                <a href="./order-tracking.html" class="block py-3 px-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors min-h-[44px] flex items-center">Order Tracking</a>
+                <hr class="border-white/10 my-3">
+                <a href="./signin.html" class="account-link block py-3 px-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors min-h-[44px] flex items-center text-center justify-center">Sign In</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Solid blue background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0d3e8b] via-[#1b5fd0] to-[#2468d9]"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8 animate-slide-up">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium">
+                        <span class="w-2 h-2 bg-green-500 rounded-full live-indicator"></span>
+                        No Vouchers. Direct Instant Delivery.
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+                        Global Connectivity <br>
+                        <span class="gradient-text">Made Instant</span>
+                    </h1>
+                    <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-lg leading-relaxed">
+                        Direct airtime top-up, eSIMs, and gift cards delivered instantly to 150+ countries. No PINs, no waitingï¿½just seamless global connection.
+                    </p>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+                        <a id="hero-start-topup" href="./buy-airtime.html" class="bg-accent-gold hover:bg-accent-orange text-brand-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-accent-gold/25 min-h-[44px] flex-1 sm:flex-none">
+                            <i class="fas fa-paper-plane"></i>
+                            Start Top-Up Now
+                        </a>
+                        <a id="hero-get-esim" href="./carrier-esim.html" class="border-2 border-white/30 hover:border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-lg transition-all hover:bg-white/5 flex items-center justify-center gap-2 min-h-[44px] flex-1 sm:flex-none">
+                            <i class="fas fa-sim-card"></i>
+                            Get eSIM
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-6 pt-4">
+                        <div class="flex -space-x-3">
+                            <img src="https://flagcdn.com/w40/ng.png" class="w-10 h-10 rounded-full border-2 border-brand-950 object-cover" alt="NG">
+                            <img src="https://flagcdn.com/w40/gh.png" class="w-10 h-10 rounded-full border-2 border-brand-950 object-cover" alt="GH">
+                            <img src="https://flagcdn.com/w40/us.png" class="w-10 h-10 rounded-full border-2 border-brand-950 object-cover" alt="US">
+                            <img src="https://flagcdn.com/w40/gb.png" class="w-10 h-10 rounded-full border-2 border-brand-950 object-cover" alt="UK">
+                            <div class="w-10 h-10 rounded-full border-2 border-theme-900 bg-theme-800 flex items-center justify-center text-xs font-bold">+150</div>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            <span class="text-white font-bold">150+</span> Countries Supported
+                        </div>
+                    </div>
+                </div>
+                <div class="relative w-full max-w-[700px] mx-auto">
+                    <div class="relative z-10">
+                        <div class="absolute -top-6 -right-6 bg-accent-gold text-brand-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg z-20">
+                            <i class="fas fa-bolt mr-1"></i>
+                            Instant
+                        </div>
+                        <div class="orbit-stage">
+                            <div class="orbit-starfield" style="background-image: url('./ktrefill-theme/images/space-bg-IpzlSWOH.jpg');"></div>
+                            <div class="orbit-rotor">
+                                <div class="orbit-item" style="--angle: 0deg;">
+                                    <img src="./ktrefill-theme/images/orbit-sim-mTI3NbV0.png" alt="SIM" />
+                                </div>
+                                <div class="orbit-item" style="--angle: 90deg;">
+                                    <img src="./ktrefill-theme/images/orbit-topup-CgHpCd3t.png" alt="Top-up" />
+                                </div>
+                                <div class="orbit-item" style="--angle: 180deg;">
+                                    <img src="./ktrefill-theme/images/orbit-esim-CfW6HOyo.png" alt="eSIM" />
+                                </div>
+                                <div class="orbit-item" style="--angle: 270deg;">
+                                    <img src="./ktrefill-theme/images/orbit-giftcard-DdaXXKji.png" alt="Gift card" />
+                                </div>
+                            </div>
+                            <img src="./ktrefill-theme/images/earth-realistic-CZaqaNks.png" alt="World" class="earth-core" width="1024" height="1024">
+                        </div>
+                    </div>
+                </div>
+                                            <!-- Decorative Elements -->
+                    <div class="absolute -bottom-8 -left-8 w-24 h-24 bg-theme-700/50 rounded-full blur-2xl"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-accent-gold/20 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Trust Badges -->
+    <section class="py-12 bg-theme-900/30 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-2xl text-accent-gold"></i>
+                    <span class="font-semibold">Bank-Level Security</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-clock text-2xl text-accent-gold"></i>
+                    <span class="font-semibold">24/7 Human Support</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-bolt text-2xl text-accent-gold"></i>
+                    <span class="font-semibold">Instant Delivery</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-globe text-2xl text-accent-gold"></i>
+                    <span class="font-semibold">150+ Countries</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Carrier Marquee -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="mb-5 text-center text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Top-up & SIMs for 500+ carriers worldwide</p>
+            <div class="carrier-marquee rounded-full border border-white/10 bg-white/5 shadow-[0_0_80px_rgba(255,255,255,0.03)]">
+                <div class="carrier-marquee-track">
+                    <span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=verizon.com&sz=128" alt="Verizon logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Verizon</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=att.com&sz=128" alt="AT&T logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">AT&T</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=t-mobile.com&sz=128" alt="T-Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">T-Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=mintmobile.com&sz=128" alt="Mint Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Mint Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=cricketwireless.com&sz=128" alt="Cricket logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Cricket</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=boostmobile.com&sz=128" alt="Boost Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Boost Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=metrobyt-mobile.com&sz=128" alt="Metro by T-Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Metro by T-Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=uscellular.com&sz=128" alt="US Cellular logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">US Cellular</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=visible.com&sz=128" alt="Visible logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Visible</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=fi.google.com&sz=128" alt="Google Fi logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Google Fi</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=128" alt="Vodafone logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Vodafone</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=three.co.uk&sz=128" alt="Three logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Three</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=o2.co.uk&sz=128" alt="O2 logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">O2</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=ee.co.uk&sz=128" alt="EE logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">EE</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=orange.com&sz=128" alt="Orange logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Orange</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=mtn.com&sz=128" alt="MTN logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">MTN</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=airtel.in&sz=128" alt="Airtel logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Airtel</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=safaricom.co.ke&sz=128" alt="Safaricom logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Safaricom</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=gloworld.com&sz=128" alt="Glo logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Glo</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=etisalat.ae&sz=128" alt="Etisalat logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Etisalat</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=lycamobile.com&sz=128" alt="Lycamobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Lycamobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=lebara.com&sz=128" alt="Lebara logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Lebara</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=giffgaff.com&sz=128" alt="Giffgaff logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Giffgaff</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=verizon.com&sz=128" alt="Verizon logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Verizon</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=att.com&sz=128" alt="AT&T logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">AT&T</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=t-mobile.com&sz=128" alt="T-Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">T-Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=mintmobile.com&sz=128" alt="Mint Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Mint Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=cricketwireless.com&sz=128" alt="Cricket logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Cricket</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=boostmobile.com&sz=128" alt="Boost Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Boost Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=metrobyt-mobile.com&sz=128" alt="Metro by T-Mobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Metro by T-Mobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=uscellular.com&sz=128" alt="US Cellular logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">US Cellular</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=visible.com&sz=128" alt="Visible logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Visible</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=fi.google.com&sz=128" alt="Google Fi logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Google Fi</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=vodafone.com&sz=128" alt="Vodafone logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Vodafone</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=three.co.uk&sz=128" alt="Three logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Three</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=o2.co.uk&sz=128" alt="O2 logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">O2</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=ee.co.uk&sz=128" alt="EE logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">EE</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=orange.com&sz=128" alt="Orange logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Orange</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=mtn.com&sz=128" alt="MTN logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">MTN</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=airtel.in&sz=128" alt="Airtel logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Airtel</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=safaricom.co.ke&sz=128" alt="Safaricom logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Safaricom</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=gloworld.com&sz=128" alt="Glo logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Glo</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=etisalat.ae&sz=128" alt="Etisalat logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Etisalat</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=lycamobile.com&sz=128" alt="Lycamobile logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Lycamobile</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=lebara.com&sz=128" alt="Lebara logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Lebara</span></span><span class="carrier-chip"><img src="https://www.google.com/s2/favicons?domain=giffgaff.com&sz=128" alt="Giffgaff logo" loading="lazy" width="32" height="32" class="carrier-logo"><span class="carrier-name">Giffgaff</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                <span class="text-accent-gold font-semibold tracking-wider uppercase text-sm">Our Services</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Everything You Need to Stay Connected</h2>
+                <p class="text-gray-400 text-lg">From instant airtime to global data eSIMs, we deliver digital connectivity solutions without the hassle of physical vouchers.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Airtime Top-Up -->
+                <div class="service-card glass-card rounded-3xl p-8 scroll-reveal group cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-mobile-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">International Airtime</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Direct top-up to any mobile number in 150+ countries. No PINs, no scratching cardsï¿½just instant credit delivery.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Instant delivery</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> All major carriers</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Bulk discounts</li>
+                    </ul>
+                    <a href="./buy-airtime.html" class="text-accent-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Top-Up Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Data eSIM -->
+                <div class="service-card glass-card rounded-3xl p-8 scroll-reveal group cursor-pointer" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-wifi text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Data eSIMs</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Travel without roaming charges. Get high-speed data in 100+ countries with QR code activation in minutes.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Instant QR activation</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Regional & global plans</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 5G where available</li>
+                    </ul>
+                    <a href="./carrier-esim.html" class="text-accent-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Get eSIM <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Physical SIM -->
+                <div class="service-card glass-card rounded-3xl p-8 scroll-reveal group cursor-pointer" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-sim-card text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Physical SIM Cards</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">International carrier SIM cards delivered to your door. Perfect for long-term stays or backup connectivity.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Worldwide shipping</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Pre-activated options</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Multi-size SIMs</li>
+                    </ul>
+                    <a href="./physical-sim.html" class="text-accent-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Order SIM <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Gift Cards -->
+                <div class="service-card glass-card rounded-3xl p-8 scroll-reveal group cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-gift text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Gift Cards</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Apple, Google Play, Steam, and more. Digital codes delivered instantly to your email or dashboard.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 50+ brands</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Instant email delivery</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> No expiration</li>
+                    </ul>
+                    <a href="./buy-gift-card.html" class="text-accent-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Buy Gift Card <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Virtual Cards -->
+                <div class="service-card glass-card rounded-3xl p-8 scroll-reveal group cursor-pointer" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-credit-card text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Virtual Cards</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Secure virtual Visa/Mastercard for online purchases. Control spending with disposable card numbers.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Instant generation</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Fraud protection</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Multi-currency</li>
+                    </ul>
+                    <a href="./dashboard.html" class="text-accent-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Create Card <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <!-- Carrier eSIM -->
+                <div class="service-card glass-card rounded-3xl p-8 scroll-reveal group cursor-pointer" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-broadcast-tower text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Carrier eSIMs</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">Direct carrier partnerships for local rates without the local SIM. Keep your number, add local data.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Local rates</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Keep WhatsApp number</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Dual SIM support</li>
+                    </ul>
+                    <a href="./carrier-esim.html" class="text-accent-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Explore Plans <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="relative z-10 mx-auto max-w-7xl px-5 pb-24 sm:px-8">
+        <div class="mb-12 max-w-3xl">
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold backdrop-blur">Our exclusive advantage</span>
+            <h2 class="mt-4 text-4xl font-bold text-white sm:text-5xl leading-[1.05]">No PIN Codes. No Extra Steps. <span class="text-accent-gold">Credit Just Appears.</span></h2>
+            <p class="mt-5 text-base sm:text-lg text-white/80 leading-relaxed">This is what sets us apart: most competitors only offer the old voucher/PIN method. We built Direct Top-Up — and we still offer PIN Top-Up too, for those who prefer it.</p>
+        </div>
+        <div class="relative grid items-center gap-8 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
+            <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur opacity-80">
+                <div class="text-[11px] font-semibold uppercase tracking-widest text-white/50 mb-5">PIN Top-Up <span class="text-white/40">(what competitors offer)</span></div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                    <div class="text-xs font-semibold uppercase tracking-wider text-white/60 mb-4">Voucher / PIN Top-Up</div>
+                    <ol class="space-y-3.5">
+                        <li class="flex items-center gap-3 text-sm text-white/75"><span class="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-white/20 text-[11px] font-semibold text-white/70">1</span><span>Buy a PIN code</span><span class="ml-auto h-2 w-2 rounded-full border border-white/30" aria-hidden="true"></span></li>
+                        <li class="flex items-center gap-3 text-sm text-white/75"><span class="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-white/20 text-[11px] font-semibold text-white/70">2</span><span>Copy long PIN</span><span class="ml-auto h-2 w-2 rounded-full border border-white/30" aria-hidden="true"></span></li>
+                        <li class="flex items-center gap-3 text-sm text-white/75"><span class="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-white/20 text-[11px] font-semibold text-white/70">3</span><span>Send via WhatsApp</span><span class="ml-auto h-2 w-2 rounded-full border border-white/30" aria-hidden="true"></span></li>
+                        <li class="flex items-center gap-3 text-sm text-white/75"><span class="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-white/20 text-[11px] font-semibold text-white/70">4</span><span>Recipient dials *code#</span><span class="ml-auto h-2 w-2 rounded-full border border-white/30" aria-hidden="true"></span></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center justify-center"><span class="grid h-14 w-14 place-items-center rounded-full bg-accent-gold text-sm font-bold text-[#1a0f3d] shadow-lg">VS</span></div>
+            <div class="relative">
+                <div class="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-accent-gold/30 via-[#5b2eff]/20 to-transparent blur-2xl" aria-hidden="true"></div>
+                <div class="relative rounded-3xl border-2 p-6" style="border-color: rgba(251, 191, 36, 0.6); background: linear-gradient(135deg, #1a0f3d 0%, #2a1a5e 100%);" >
+                    <div class="mb-6 text-center">
+                        <div class="text-[11px] font-bold uppercase tracking-widest text-emerald-400">Direct Top-Up <span class="text-accent-gold">✨</span> Exclusive to us</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 rounded-xl bg-[#3b2785] p-3.5">
+                            <span class="grid h-9 w-9 place-items-center rounded-lg bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone h-4 w-4 text-white" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg></span>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider text-white/60">Recipient</div>
+                                <div class="text-sm font-semibold text-white">+44 7700 *** ***</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 rounded-xl bg-[#3b2785] p-3.5">
+                            <span class="grid h-9 w-9 place-items-center rounded-lg bg-white/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gift h-4 w-4 text-accent-gold" aria-hidden="true"><path d="M12 7v14"></path><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"></path><rect x="3" y="7" width="18" height="4" rx="1"></rect></svg></span>
+                            <div class="text-left">
+                                <div class="text-[10px] uppercase tracking-wider text-white/60">Amount</div>
+                                <div class="text-sm font-semibold text-white">£10.00 Airtime</div>
+                            </div>
+                        </div>
+                        <button type="button" class="flex w-full items-center justify-center gap-2 rounded-xl bg-accent-gold py-3.5 text-sm font-bold text-[#1a0f3d] transition-all duration-200 hover:brightness-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg> Pay &amp; Send
+                        </button>
+                        <div class="flex items-center gap-3 rounded-xl bg-emerald-600/90 p-3.5">
+                            <span class="grid h-9 w-9 place-items-center rounded-lg bg-white/20"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-5 w-5 text-white" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                            <div class="text-left">
+                                <div class="text-[11px] font-semibold uppercase tracking-wider text-white/90">Delivered instantly!</div>
+                                <div class="text-sm font-bold text-white">£10.00 credited</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+            <div class="flex gap-4">
+                <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-white/20 bg-accent-gold/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4 text-accent-gold" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                <div>
+                    <h3 class="text-base font-semibold text-white">Zero effort for your recipient</h3>
+                    <p class="mt-1 text-sm text-white/70 leading-relaxed">Credit lands directly on their phone. No codes, no dialling, no confusion.</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-white/20 bg-accent-gold/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4 text-accent-gold" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                <div>
+                    <h3 class="text-base font-semibold text-white">Instant confirmation for you</h3>
+                    <p class="mt-1 text-sm text-white/70 leading-relaxed">Real-time delivery confirmation the moment the credit hits.</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-white/20 bg-accent-gold/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4 text-accent-gold" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                <div>
+                    <h3 class="text-base font-semibold text-white">Still want a PIN voucher?</h3>
+                    <p class="mt-1 text-sm text-white/70 leading-relaxed">No problem — PIN Top-Up remains available as an optional alternative for any network.</p>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <span class="grid h-8 w-8 flex-shrink-0 place-items-center rounded-full border border-white/20 bg-accent-gold/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4 text-accent-gold" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                <div>
+                    <h3 class="text-base font-semibold text-white">The choice is always yours</h3>
+                    <p class="mt-1 text-sm text-white/70 leading-relaxed">Direct for speed and simplicity. PIN if that's what you're used to. Either way, we've got you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="payments" aria-labelledby="payments-heading" class="relative z-10 mx-auto max-w-7xl px-5 pb-14 sm:px-8">
+        <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-5 backdrop-blur-xl sm:p-8 animate-fade-in">
+            <div class="flex flex-col items-center gap-3 text-center">
+                <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check h-3.5 w-3.5 text-accent-gold" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg> Secure Checkout</span>
+                <h2 id="payments-heading" class="text-3xl font-bold text-white sm:text-4xl md:text-5xl">Pay Your Way</h2>
+                <p class="text-base font-semibold text-white sm:text-lg md:text-xl">Local Currency &amp; Crypto Accepted</p>
+                <p class="max-w-xl text-sm text-white/80 sm:text-base">No conversion headaches. Checkout in your currency — fast, safe, and familiar.</p>
+            </div>
+            <div class="mt-7">
+                <h3 class="mb-3 text-center text-[11px] font-bold uppercase tracking-[0.28em] text-accent-gold">Currencies</h3>
+                <div class="pay-marquee">
+                    <div class="pay-marquee-track left">
+                        <div class="flex gap-2.5">
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ng.png" srcset="https://flagcdn.com/w80/ng.png 1x, https://flagcdn.com/w160/ng.png 2x" alt="NGN" loading="lazy">NGN</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/gh.png" srcset="https://flagcdn.com/w80/gh.png 1x, https://flagcdn.com/w160/gh.png 2x" alt="GHS" loading="lazy">GHS</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/cm.png" srcset="https://flagcdn.com/w80/cm.png 1x, https://flagcdn.com/w160/cm.png 2x" alt="XAF" loading="lazy">XAF</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/us.png" srcset="https://flagcdn.com/w80/us.png 1x, https://flagcdn.com/w160/us.png 2x" alt="USD" loading="lazy">USD</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/eu.png" srcset="https://flagcdn.com/w80/eu.png 1x, https://flagcdn.com/w160/eu.png 2x" alt="EUR" loading="lazy">EUR</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/gb.png" srcset="https://flagcdn.com/w80/gb.png 1x, https://flagcdn.com/w160/gb.png 2x" alt="GBP" loading="lazy">GBP</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ke.png" srcset="https://flagcdn.com/w80/ke.png 1x, https://flagcdn.com/w160/ke.png 2x" alt="KES" loading="lazy">KES</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/za.png" srcset="https://flagcdn.com/w80/za.png 1x, https://flagcdn.com/w160/za.png 2x" alt="ZAR" loading="lazy">ZAR</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/sn.png" srcset="https://flagcdn.com/w80/sn.png 1x, https://flagcdn.com/w160/sn.png 2x" alt="XOF" loading="lazy">XOF</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ug.png" srcset="https://flagcdn.com/w80/ug.png 1x, https://flagcdn.com/w160/ug.png 2x" alt="UGX" loading="lazy">UGX</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/tz.png" srcset="https://flagcdn.com/w80/tz.png 1x, https://flagcdn.com/w160/tz.png 2x" alt="TZS" loading="lazy">TZS</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/au.png" srcset="https://flagcdn.com/w80/au.png 1x, https://flagcdn.com/w160/au.png 2x" alt="AUD" loading="lazy">AUD</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ca.png" srcset="https://flagcdn.com/w80/ca.png 1x, https://flagcdn.com/w160/ca.png 2x" alt="CAD" loading="lazy">CAD</span>
+                        </div>
+                        <div class="flex gap-2.5">
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ng.png" srcset="https://flagcdn.com/w80/ng.png 1x, https://flagcdn.com/w160/ng.png 2x" alt="NGN" loading="lazy">NGN</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/gh.png" srcset="https://flagcdn.com/w80/gh.png 1x, https://flagcdn.com/w160/gh.png 2x" alt="GHS" loading="lazy">GHS</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/cm.png" srcset="https://flagcdn.com/w80/cm.png 1x, https://flagcdn.com/w160/cm.png 2x" alt="XAF" loading="lazy">XAF</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/us.png" srcset="https://flagcdn.com/w80/us.png 1x, https://flagcdn.com/w160/us.png 2x" alt="USD" loading="lazy">USD</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/eu.png" srcset="https://flagcdn.com/w80/eu.png 1x, https://flagcdn.com/w160/eu.png 2x" alt="EUR" loading="lazy">EUR</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/gb.png" srcset="https://flagcdn.com/w80/gb.png 1x, https://flagcdn.com/w160/gb.png 2x" alt="GBP" loading="lazy">GBP</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ke.png" srcset="https://flagcdn.com/w80/ke.png 1x, https://flagcdn.com/w160/ke.png 2x" alt="KES" loading="lazy">KES</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/za.png" srcset="https://flagcdn.com/w80/za.png 1x, https://flagcdn.com/w160/za.png 2x" alt="ZAR" loading="lazy">ZAR</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/sn.png" srcset="https://flagcdn.com/w80/sn.png 1x, https://flagcdn.com/w160/sn.png 2x" alt="XOF" loading="lazy">XOF</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ug.png" srcset="https://flagcdn.com/w80/ug.png 1x, https://flagcdn.com/w160/ug.png 2x" alt="UGX" loading="lazy">UGX</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/tz.png" srcset="https://flagcdn.com/w80/tz.png 1x, https://flagcdn.com/w160/tz.png 2x" alt="TZS" loading="lazy">TZS</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/au.png" srcset="https://flagcdn.com/w80/au.png 1x, https://flagcdn.com/w160/au.png 2x" alt="AUD" loading="lazy">AUD</span>
+                            <span class="pay-pill"><img class="flag" src="https://flagcdn.com/w80/ca.png" srcset="https://flagcdn.com/w80/ca.png 1x, https://flagcdn.com/w160/ca.png 2x" alt="CAD" loading="lazy">CAD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5">
+                <h3 class="mb-3 text-center text-[11px] font-bold uppercase tracking-[0.28em] text-accent-gold">Crypto</h3>
+                <div class="pay-marquee">
+                    <div class="pay-marquee-track right">
+                        <div class="flex gap-2.5">
+                            <span class="pay-pill crypto" style="border-color:#F7931A66;box-shadow:0 0 12px #F7931A55, inset 0 0 6px #F7931A22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/btc.svg" alt="BTC" loading="lazy">BTC</span>
+                            <span class="pay-pill crypto" style="border-color:#26A17B66;box-shadow:0 0 12px #26A17B55, inset 0 0 6px #26A17B22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" alt="USDT" loading="lazy">USDT</span>
+                            <span class="pay-pill crypto" style="border-color:#627EEA66;box-shadow:0 0 12px #627EEA55, inset 0 0 6px #627EEA22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/eth.svg" alt="ETH" loading="lazy">ETH</span>
+                            <span class="pay-pill crypto" style="border-color:#14F19566;box-shadow:0 0 12px #14F19555, inset 0 0 6px #14F19522"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/sol.svg" alt="SOL" loading="lazy">SOL</span>
+                            <span class="pay-pill crypto" style="border-color:#F3BA2F66;box-shadow:0 0 12px #F3BA2F55, inset 0 0 6px #F3BA2F22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/bnb.svg" alt="BNB" loading="lazy">BNB</span>
+                            <span class="pay-pill crypto" style="border-color:#23292F66;box-shadow:0 0 12px #23292F55, inset 0 0 6px #23292F22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/xrp.svg" alt="XRP" loading="lazy">XRP</span>
+                            <span class="pay-pill crypto" style="border-color:#2775CA66;box-shadow:0 0 12px #2775CA55, inset 0 0 6px #2775CA22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdc.svg" alt="USDC" loading="lazy">USDC</span>
+                            <span class="pay-pill crypto" style="border-color:#C2A63366;box-shadow:0 0 12px #C2A63355, inset 0 0 6px #C2A63322"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/doge.svg" alt="DOGE" loading="lazy">DOGE</span>
+                            <span class="pay-pill crypto" style="border-color:#345D9D66;box-shadow:0 0 12px #345D9D55, inset 0 0 6px #345D9D22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/ltc.svg" alt="LTC" loading="lazy">LTC</span>
+                            <span class="pay-pill crypto" style="border-color:#8247E566;box-shadow:0 0 12px #8247E555, inset 0 0 6px #8247E522"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/matic.svg" alt="MATIC" loading="lazy">MATIC</span>
+                        </div>
+                        <div class="flex gap-2.5">
+                            <span class="pay-pill crypto" style="border-color:#F7931A66;box-shadow:0 0 12px #F7931A55, inset 0 0 6px #F7931A22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/btc.svg" alt="BTC" loading="lazy">BTC</span>
+                            <span class="pay-pill crypto" style="border-color:#26A17B66;box-shadow:0 0 12px #26A17B55, inset 0 0 6px #26A17B22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" alt="USDT" loading="lazy">USDT</span>
+                            <span class="pay-pill crypto" style="border-color:#627EEA66;box-shadow:0 0 12px #627EEA55, inset 0 0 6px #627EEA22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/eth.svg" alt="ETH" loading="lazy">ETH</span>
+                            <span class="pay-pill crypto" style="border-color:#14F19566;box-shadow:0 0 12px #14F19555, inset 0 0 6px #14F19522"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/sol.svg" alt="SOL" loading="lazy">SOL</span>
+                            <span class="pay-pill crypto" style="border-color:#F3BA2F66;box-shadow:0 0 12px #F3BA2F55, inset 0 0 6px #F3BA2F22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/bnb.svg" alt="BNB" loading="lazy">BNB</span>
+                            <span class="pay-pill crypto" style="border-color:#23292F66;box-shadow:0 0 12px #23292F55, inset 0 0 6px #23292F22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/xrp.svg" alt="XRP" loading="lazy">XRP</span>
+                            <span class="pay-pill crypto" style="border-color:#2775CA66;box-shadow:0 0 12px #2775CA55, inset 0 0 6px #2775CA22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdc.svg" alt="USDC" loading="lazy">USDC</span>
+                            <span class="pay-pill crypto" style="border-color:#C2A63366;box-shadow:0 0 12px #C2A63355, inset 0 0 6px #C2A63322"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/doge.svg" alt="DOGE" loading="lazy">DOGE</span>
+                            <span class="pay-pill crypto" style="border-color:#345D9D66;box-shadow:0 0 12px #345D9D55, inset 0 0 6px #345D9D22"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/ltc.svg" alt="LTC" loading="lazy">LTC</span>
+                            <span class="pay-pill crypto" style="border-color:#8247E566;box-shadow:0 0 12px #8247E555, inset 0 0 6px #8247E522"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/matic.svg" alt="MATIC" loading="lazy">MATIC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-7 flex flex-col items-center gap-3 text-center">
+                <p class="text-base font-medium text-white sm:text-lg">We handle the exchange so you don't have to.</p>
+                <span class="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/15 px-4 py-1.5 text-sm font-bold text-emerald-200"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-4 w-4" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg> Zero hidden fees</span>
+            </div>
+            <div class="mt-7 border-t border-white/10 pt-6">
+                <h3 class="mb-4 text-center text-[11px] font-bold uppercase tracking-[0.28em] text-accent-gold">Accepted Payment Methods</h3>
+                <div class="payment-methods-row items-center justify-center gap-2.5">
+                    <div class="pay-method" title="Verve"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%2056%22%20role%3D%22img%22%20aria-label%3D%22Verve%22%3E%3Crect%20width%3D%22180%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Ctext%20x%3D%2218%22%20y%3D%2236%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2231%22%20font-weight%3D%22800%22%20fill%3D%22%23157347%22%3Everve%3C%2Ftext%3E%3Cpath%20d%3D%22M137%2016h23l-8%2024h-23z%22%20fill%3D%22%23ef7d00%22%2F%3E%3Cpath%20d%3D%22M145%2016h23l-8%2024h-23z%22%20fill%3D%22%2313a538%22%20opacity%3D%22.9%22%2F%3E%3C%2Fsvg%3E" alt="Verve" loading="lazy"></div>
+                    <div class="pay-method" title="Visa"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%2056%22%20role%3D%22img%22%20aria-label%3D%22Visa%22%3E%3Crect%20width%3D%22180%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Ctext%20x%3D%2224%22%20y%3D%2238%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2235%22%20font-style%3D%22italic%22%20font-weight%3D%22900%22%20letter-spacing%3D%221%22%20fill%3D%22%231434CB%22%3EVISA%3C%2Ftext%3E%3Cpath%20d%3D%22M29%2016h34l-6%207H23z%22%20fill%3D%22%23F7B600%22%2F%3E%3C%2Fsvg%3E" alt="Visa" loading="lazy"></div>
+                    <div class="pay-method" title="Mastercard"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20210%2056%22%20role%3D%22img%22%20aria-label%3D%22Mastercard%22%3E%3Crect%20width%3D%22210%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%2228%22%20r%3D%2218%22%20fill%3D%22%23EB001B%22%2F%3E%3Ccircle%20cx%3D%2294%22%20cy%3D%2228%22%20r%3D%2218%22%20fill%3D%22%23F79E1B%22%2F%3E%3Cpath%20d%3D%22M83%2015a18%2018%200%200%201%200%2026%2018%2018%200%200%201%200-26z%22%20fill%3D%22%23FF5F00%22%2F%3E%3Ctext%20x%3D%22122%22%20y%3D%2234%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2216%22%20font-weight%3D%22700%22%20fill%3D%22%23231F20%22%3Emastercard%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Mastercard" loading="lazy"></div>
+                    <div class="pay-method" title="Maestro"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20190%2056%22%20role%3D%22img%22%20aria-label%3D%22Maestro%22%3E%3Crect%20width%3D%22190%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Ccircle%20cx%3D%2270%22%20cy%3D%2228%22%20r%3D%2218%22%20fill%3D%22%23009DDD%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2228%22%20r%3D%2218%22%20fill%3D%22%23ED0006%22%2F%3E%3Cpath%20d%3D%22M81%2015a18%2018%200%200%201%200%2026%2018%2018%200%200%201%200-26z%22%20fill%3D%22%236C6BBD%22%2F%3E%3Ctext%20x%3D%22118%22%20y%3D%2234%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2217%22%20font-weight%3D%22700%22%20fill%3D%22%23231F20%22%3EMaestro%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Maestro" loading="lazy"></div>
+                    <div class="pay-method" title="American Express"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20190%2056%22%20role%3D%22img%22%20aria-label%3D%22American%20Express%22%3E%3Crect%20width%3D%22190%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%2225%22%20y%3D%229%22%20width%3D%22140%22%20height%3D%2238%22%20rx%3D%226%22%20fill%3D%22%232E77BC%22%2F%3E%3Ctext%20x%3D%2240%22%20y%3D%2225%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2212%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%3EAMERICAN%3C%2Ftext%3E%3Ctext%20x%3D%2240%22%20y%3D%2239%22%20font-family%3D%22Arial%20Black%2C%20Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2212%22%20font-weight%3D%22900%22%20fill%3D%22%23ffffff%22%3EEXPRESS%3C%2Ftext%3E%3C%2Fsvg%3E" alt="American Express" loading="lazy"></div>
+                    <div class="pay-method" title="PayPal"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20180%2056%22%20role%3D%22img%22%20aria-label%3D%22PayPal%22%3E%3Crect%20width%3D%22180%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Ctext%20x%3D%2227%22%20y%3D%2236%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2229%22%20font-weight%3D%22800%22%20fill%3D%22%23003087%22%3EPay%3C%2Ftext%3E%3Ctext%20x%3D%2283%22%20y%3D%2236%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2229%22%20font-weight%3D%22800%22%20fill%3D%22%23009CDE%22%3EPal%3C%2Ftext%3E%3C%2Fsvg%3E" alt="PayPal" loading="lazy"></div>
+                    <div class="pay-method" title="Flutterwave"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%2056%22%20role%3D%22img%22%20aria-label%3D%22Flutterwave%22%3E%3Crect%20width%3D%22220%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Ccircle%20cx%3D%2233%22%20cy%3D%2228%22%20r%3D%2213%22%20fill%3D%22%23F5A623%22%2F%3E%3Ccircle%20cx%3D%2248%22%20cy%3D%2222%22%20r%3D%226%22%20fill%3D%22%23111827%22%2F%3E%3Ctext%20x%3D%2268%22%20y%3D%2235%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2220%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EFlutterwave%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Flutterwave" loading="lazy"></div>
+                    <div class="pay-method" title="Korapay"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20190%2056%22%20role%3D%22img%22%20aria-label%3D%22Korapay%22%3E%3Crect%20width%3D%22190%22%20height%3D%2256%22%20rx%3D%2212%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%2216%22%20width%3D%2224%22%20height%3D%2224%22%20rx%3D%227%22%20fill%3D%22%232563EB%22%2F%3E%3Cpath%20d%3D%22M31%2028l8-8v16z%22%20fill%3D%22%23ffffff%22%2F%3E%3Ctext%20x%3D%2262%22%20y%3D%2235%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EKorapay%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Korapay" loading="lazy"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Direct Top-Up vs Vouchers -->
+    <section id="why-us" class="py-24 bg-theme-900/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%239C92AC%22%20fill-opacity%3D%220.03%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="scroll-reveal">
+                    <span class="text-accent-gold font-semibold tracking-wider uppercase text-sm">The KTRefill Advantage</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Why Direct Top-Up Beats Vouchers</h2>
+                    <p class="text-gray-400 text-lg mb-8">While competitors sell scratch cards and PINs, we deliver direct to your phone. Here's why that matters:</p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-bolt text-green-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Instant vs. Manual</h4>
+                                <p class="text-gray-400">Direct top-up hits your phone in seconds. Vouchers require dialing codes, risking errors and delays.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shield-alt text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Secure vs. Risky</h4>
+                                <p class="text-gray-400">No physical cards to lose or scratch codes to misread. Encrypted delivery straight to the carrier.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-headset text-purple-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">24/7 Support vs. None</h4>
+                                <p class="text-gray-400">Stuck with a voucher at midnight? Good luck. Our team is here round-the-clock to help with any issue.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative scroll-reveal">
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-gold to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
+                    <div class="relative bg-theme-950 border border-white/10 rounded-3xl p-8">
+                        <div class="flex items-center justify-between mb-8 pb-8 border-b border-white/10">
+                            <div class="text-center flex-1">
+                                <div class="text-3xl font-bold text-accent-gold mb-1">30s</div>
+                                <div class="text-sm text-gray-400">Average Delivery</div>
+                            </div>
+                            <div class="w-px h-12 bg-white/10"></div>
+                            <div class="text-center flex-1">
+                                <div class="text-3xl font-bold text-accent-gold mb-1">0%</div>
+                                <div class="text-sm text-gray-400">Error Rate</div>
+                            </div>
+                            <div class="w-px h-12 bg-white/10"></div>
+                            <div class="text-center flex-1">
+                                <div class="text-3xl font-bold text-accent-gold mb-1">24/7</div>
+                                <div class="text-sm text-gray-400">Human Support</div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                    <span class="font-medium">Direct Carrier Integration</span>
+                                </div>
+                                <span class="text-green-500 text-sm">Active</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                    <span class="font-medium">Real-time Transaction Tracking</span>
+                                </div>
+                                <span class="text-green-500 text-sm">Active</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                    <span class="font-medium">Failed Transaction Auto-Retry</span>
+                                </div>
+                                <span class="text-green-500 text-sm">Active</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                    <span class="font-medium">Instant Refund on Failure</span>
+                                </div>
+                                <span class="text-green-500 text-sm">Active</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-accent-gold/10 border border-accent-gold/20 rounded-xl flex items-center gap-3">
+                            <i class="fas fa-info-circle text-accent-gold text-xl"></i>
+                            <p class="text-sm text-gray-300">Voucher resellers can't offer these guarantees. <span class="text-accent-gold font-semibold">We can.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Global Coverage -->
+    <section id="coverage" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                <span class="text-accent-gold font-semibold tracking-wider uppercase text-sm">Global Reach</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Connected to 150+ Countries</h2>
+                <p class="text-gray-400 text-lg">From Lagos to London, Accra to Atlantaï¿½send airtime and data anywhere your loved ones are.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-12 scroll-reveal">
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/ng.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Nigeria">
+                    <div class="font-semibold text-sm">Nigeria</div>
+                    <div class="text-xs text-gray-400">MTN, Airtel, Glo</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/gh.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Ghana">
+                    <div class="font-semibold text-sm">Ghana</div>
+                    <div class="text-xs text-gray-400">MTN, Vodafone</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/ke.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Kenya">
+                    <div class="font-semibold text-sm">Kenya</div>
+                    <div class="text-xs text-gray-400">Safaricom, Airtel</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/za.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="South Africa">
+                    <div class="font-semibold text-sm">South Africa</div>
+                    <div class="text-xs text-gray-400">Vodacom, MTN</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/us.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="USA">
+                    <div class="font-semibold text-sm">USA</div>
+                    <div class="text-xs text-gray-400">AT&T, T-Mobile</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/gb.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="UK">
+                    <div class="font-semibold text-sm">UK</div>
+                    <div class="text-xs text-gray-400">EE, Vodafone</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/in.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="India">
+                    <div class="font-semibold text-sm">India</div>
+                    <div class="text-xs text-gray-400">Jio, Airtel</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/bd.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Bangladesh">
+                    <div class="font-semibold text-sm">Bangladesh</div>
+                    <div class="text-xs text-gray-400">Grameenphone</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/pk.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Pakistan">
+                    <div class="font-semibold text-sm">Pakistan</div>
+                    <div class="text-xs text-gray-400">Jazz, Zong</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/ph.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Philippines">
+                    <div class="font-semibold text-sm">Philippines</div>
+                    <div class="text-xs text-gray-400">Globe, Smart</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer">
+                    <img src="https://flagcdn.com/w80/br.png" class="w-12 h-8 mx-auto mb-2 rounded object-cover country-flag" alt="Brazil">
+                    <div class="font-semibold text-sm">Brazil</div>
+                    <div class="text-xs text-gray-400">Vivo, Claro</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 text-center hover:bg-white/10 transition-colors cursor-pointer bg-accent-gold/10 border-accent-gold/30">
+                    <div class="w-12 h-8 mx-auto mb-2 rounded bg-theme-800 flex items-center justify-center text-xs font-bold">+140</div>
+                    <div class="font-semibold text-sm text-accent-gold">More Countries</div>
+                    <div class="text-xs text-gray-400">View All</div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button id="coverage-view-all" type="button" class="border-2 border-white/20 hover:border-accent-gold text-white px-8 py-3 rounded-full font-semibold transition-all hover:bg-white/5">
+                    View Full Coverage Map
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- How It Works -->
+    <section class="py-24 bg-theme-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                <span class="text-accent-gold font-semibold tracking-wider uppercase text-sm">Simple Process</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Top-Up in 3 Easy Steps</h2>
+                <p class="text-gray-400 text-lg">No registration required for single purchases. Create an account to save favorites and earn rewards.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="hidden md:block absolute top-1/2 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-transparent via-accent-gold to-transparent transform -translate-y-1/2"></div>
+                <div class="relative scroll-reveal text-center">
+                    <div class="w-20 h-20 bg-theme-800 border-2 border-accent-gold rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <span class="text-3xl font-bold text-accent-gold">1</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Select Destination</h3>
+                    <p class="text-gray-400">Choose the country and enter the phone number. We automatically detect the carrier.</p>
+                </div>
+                <div class="relative scroll-reveal text-center" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 bg-theme-800 border-2 border-accent-gold rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <span class="text-3xl font-bold text-accent-gold">2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Choose Amount</h3>
+                    <p class="text-gray-400">Pick from preset amounts or enter custom value. See real-time exchange rates and fees upfront.</p>
+                </div>
+                <div class="relative scroll-reveal text-center" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 bg-theme-800 border-2 border-accent-gold rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
+                        <span class="text-3xl font-bold text-accent-gold">3</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Pay & Deliver</h3>
+                    <p class="text-gray-400">Pay securely with card, crypto, or bank transfer. Airtime arrives in seconds with confirmation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                <span class="text-accent-gold font-semibold tracking-wider uppercase text-sm">Testimonials</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">What Our Customers Say</h2>
+                <p class="text-gray-400 text-lg">Join thousands of satisfied users who trust KTRefill for their international connectivity needs.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card glass-card rounded-2xl p-8 scroll-reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"I love how simple and smooth the dashboard is. I can track all my transactions and request withdrawals anytime. The 24/7 support actually answers in minutes, not hours."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold text-lg">JK</div>
+                        <div>
+                            <div class="font-bold">Julia Keys</div>
+                            <div class="text-sm text-gray-400 flex items-center gap-2">
+                                <img src="https://flagcdn.com/w20/gb.png" class="w-4 h-3 rounded-sm" alt="UK"> United Kingdom
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card rounded-2xl p-8 scroll-reveal" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"KT Refill has made it so easy to recharge my family's phones back home in Ghana. Transactions are fast and I've never had any issues. The direct top-up is way better than buying vouchers!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-lg">SO</div>
+                        <div>
+                            <div class="font-bold">Samuel O.</div>
+                            <div class="text-sm text-gray-400 flex items-center gap-2">
+                                <img src="https://flagcdn.com/w20/ca.png" class="w-4 h-3 rounded-sm" alt="Canada"> Canada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card glass-card rounded-2xl p-8 scroll-reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <i class="fas fa-star text-accent-gold"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">"As a frequent traveler, the eSIM service has been a game-changer. I landed in Europe and got connected in less than 5 minutes. No more hunting for SIM cards at airports!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center font-bold text-lg">CM</div>
+                        <div>
+                            <div class="font-bold">Carlos Moon</div>
+                            <div class="text-sm text-gray-400 flex items-center gap-2">
+                                <img src="https://flagcdn.com/w20/us.png" class="w-4 h-3 rounded-sm" alt="USA"> USA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center scroll-reveal">
+                <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10">
+                    <span class="text-accent-gold font-bold text-2xl">4.9/5</span>
+                    <span class="text-gray-400">from over 2,000 reviews on</span>
+                    <div class="flex gap-2 ml-2">
+                        <i class="fas fa-star text-accent-gold"></i>
+                        <span class="font-semibold">TrustPilot</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-theme-900/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                <span class="text-accent-gold font-semibold tracking-wider uppercase text-sm">Support</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6">Frequently Asked Questions</h2>
+                <p class="text-gray-400 text-lg">Can't find what you're looking for? Our 24/7 support team is always ready to help.</p>
+            </div>
+            <div class="space-y-4 scroll-reveal">
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">What is KTRefill?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-5 text-gray-400 leading-relaxed">
+                        KTRefill is a digital service platform providing instant international phone top-ups, foreign SIM cards (physical and eSIM), and global gift cards. Unlike voucher resellers, we deliver directly to the recipient's phone or email within seconds.
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">Who can use KTRefill services?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-5 text-gray-400 leading-relaxed">
+                        Our services are designed for individuals and businesses needing international communication solutions. This includes travelers, students abroad, remote workers, diaspora communities sending support home, and resellers looking for reliable API access.
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">What countries do you support?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-5 text-gray-400 leading-relaxed">
+                        We support over 150 countries across Africa, Asia, Europe, the Americas, and Oceania. Major markets include Nigeria, Ghana, Kenya, India, Bangladesh, Philippines, USA, UK, and Brazil. If you don't see your country listed, contact our 24/7 supportï¿½we're constantly expanding.
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-5 text-gray-400 leading-relaxed">
+                        We accept all major credit/debit cards (Visa, Mastercard, Amex), bank transfers, PayPal, and cryptocurrency (Bitcoin, Ethereum, USDT). For business accounts, we also offer invoice payment terms with NET-30 options.
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">How is direct top-up different from vouchers?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-5 text-gray-400 leading-relaxed">
+                        Vouchers require you to buy a PIN code, then manually dial a USSD code to redeemï¿½prone to errors and delays. Direct top-up sends credit instantly to the phone number with zero action needed from the recipient. It's faster, more secure, and trackable in real-time.
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl overflow-hidden">
+                    <button class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-lg">How can I contact KTRefill?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-5 text-gray-400 leading-relaxed">
+                        We offer true 24/7 human support via WhatsApp (+234 9154635573), live chat on our website, email (support@ktrefill.com), and phone. Average response time is under 2 minutes for chat and WhatsApp. For complex issues, we schedule video calls.
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center p-8 glass-card rounded-2xl scroll-reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full live-indicator"></div>
+                    <span class="text-green-500 font-semibold">Support Online Now</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Still have questions?</h3>
+                <p class="text-gray-400 mb-6">Our team is available 24/7 to help you with any inquiries.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://wa.me/2349154635573" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        WhatsApp Us
+                    </a>
+                    <a href="mailto:support@ktrefill.com" class="border-2 border-white/20 hover:border-accent-gold text-white px-6 py-3 rounded-full font-semibold transition-all inline-flex items-center justify-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-theme-800 to-theme-900"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%239C92AC%22%20fill-opacity%3D%220.1%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]">
+        </div>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center scroll-reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6">Ready to Go Direct?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Skip the vouchers. Skip the waiting. Join thousands who trust KTRefill for instant international top-ups and eSIMs.</p>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a id="cta-start-topup" href="./buy-airtime.html" class="bg-accent-gold hover:bg-accent-orange text-brand-900 px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-lg shadow-accent-gold/25 flex items-center gap-2">
+                    <i class="fas fa-rocket"></i>
+                    Start Your First Top-Up
+                </a>
+                <a id="cta-check-rates" href="./buy-airtime.html" class="bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-white px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-2">
+                    <i class="fas fa-calculator"></i>
+                    Check Rates
+                </a>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-400">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    No hidden fees
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    Instant delivery guarantee
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    24/7 human support
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-theme-900/40 border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-accent-gold to-accent-orange rounded-lg flex items-center justify-center">
+                            <i class="fas fa-bolt text-brand-900 text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold">KT<span class="text-accent-gold">REFILL</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed">KTRefill is a digital service platform providing instant international phone top-ups, foreign SIM cards (physical and eSIM), and global gift cards.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-gold hover:text-brand-900 transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-gold hover:text-brand-900 transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-gold hover:text-brand-900 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-gold hover:text-brand-900 transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Useful Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Support Center</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="./buy-airtime.html" class="hover:text-accent-gold transition-colors">Airtime Top-Up</a></li>
+                        <li><a href="./carrier-esim.html" class="hover:text-accent-gold transition-colors">Data eSIM</a></li>
+                        <li><a href="./physical-sim.html" class="hover:text-accent-gold transition-colors">Physical SIM</a></li>
+                        <li><a href="./buy-gift-card.html" class="hover:text-accent-gold transition-colors">Gift Cards</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Virtual Cards</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">API for Resellers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Information</h4>
+                    <ul class="space-y-4 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-accent-gold"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500">24/7 Hotline</div>
+                                <div class="font-semibold text-white">+234 9154635573</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-accent-gold"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500">Email Support</div>
+                                <div class="font-semibold text-white">support@ktrefill.com</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-whatsapp text-accent-gold"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-500">WhatsApp</div>
+                                <div class="font-semibold text-white">+234 9154635573</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">ï¿½ 2024 KTRefill. All rights reserved. Licensed by relevant financial authorities.</p>
+                <div class="flex items-center gap-4">
+                    <i class="fab fa-cc-visa text-3xl text-gray-400"></i>
+                    <i class="fab fa-cc-mastercard text-3xl text-gray-400"></i>
+                    <i class="fab fa-cc-paypal text-3xl text-gray-400"></i>
+                    <i class="fab fa-bitcoin text-3xl text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to Top -->
+    <button onclick="scrollToTop()" class="fixed bottom-8 right-8 w-12 h-12 bg-accent-gold hover:bg-accent-orange text-brand-900 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-110 z-40 opacity-0 pointer-events-none" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script src="./ktrefill-theme/script.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carrier-marquee-track');
+            if (track && track.children.length > 0) {
+                track.innerHTML += track.innerHTML;
+            }
+        });
+    </script>
+</body>
+</html>
+
