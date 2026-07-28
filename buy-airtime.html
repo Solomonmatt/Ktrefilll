@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Airtime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./ktrefill-theme/style.css?v=20260726" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html"><img src="./ktrefill-theme/images/logo.webp" alt="KT Refill Logo" class="logo-img" /></a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="./buy-airtime.html">Buy Airtime</a></li>
+            <li><a href="./buy-gift-card.html">Buy GiftCard</a></li>
+            <li><a href="./physical-sim.html">Physical sim card</a></li>
+            <li><a href="./carrier-esim.html">Carrier ESIM</a></li>
+            <li><a href="./order-tracking.html">Order Tracking</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button type="button" class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <a href="./signin.html" class="account-link" aria-label="Sign in to your account">
+            <svg class="account-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21a8 8 0 0 0-16 0"></path>
+              <circle cx="12" cy="8" r="4"></circle>
+            </svg>
+          </a>
+          <a href="./cart.html" class="cart-link" aria-label="Shopping cart">
+            <svg class="cart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section topup-hero">
+        <div class="container hero-stack">
+          <div class="hero-intro">
+            <p class="eyebrow">International Top Up</p>
+            <h1>Recharge mobile credit in minutes.</h1>
+            <p class="hero-text">
+              Send airtime, data bundles and cross-border recharges to friends, family and customers with a premium, guided experience that feels effortless from start to finish.
+            </p>
+
+            <div class="hero-badges">
+              <span>160+ countries</span>
+              <span>Instant delivery</span>
+              <span>Secure checkout</span>
+            </div>
+
+            <div class="hero-steps">
+              <article class="step-card">
+                <strong>1</strong>
+                <div>
+                  <h3>Select your country</h3>
+                  <p>Choose the destination and the supported operator.</p>
+                </div>
+              </article>
+              <article class="step-card">
+                <strong>2</strong>
+                <div>
+                  <h3>Pick your plan</h3>
+                  <p>Choose data, voice or bundle packages that fit the moment.</p>
+                </div>
+              </article>
+              <article class="step-card">
+                <strong>3</strong>
+                <div>
+                  <h3>Send it instantly</h3>
+                  <p>Complete the order and receive confirmation in seconds.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-form-card">
+            <div class="step-indicator">
+              <span class="step-pill active">1 Country</span>
+              <span class="step-pill active">2 Operator</span>
+              <span class="step-pill">3 Type</span>
+              <span class="step-pill">4 Pay</span>
+            </div>
+            <form class="service-form airtime-form" id="airtime-form" data-service="airtime">
+              <div class="form-grid">
+                <label class="form-field form-field--highlight">
+                  <span>1 COUNTRY</span>
+                  <div class="custom-select-wrapper" data-select="country">
+                    <select name="country" required hidden>
+                      <option value="">Select country</option>
+                    </select>
+                    <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                      <span class="custom-select-value">Select country</span>
+                      <span class="custom-select-arrow">▾</span>
+                    </button>
+                    <div class="custom-select-panel" hidden>
+                      <div class="custom-select-search">
+                        <input type="search" placeholder="Search country" aria-label="Search country" />
+                      </div>
+                      <ul class="custom-select-options" role="listbox"></ul>
+                    </div>
+                  </div>
+                </label>
+                <label class="form-field form-field--highlight">
+                  <span>2 OPERATOR</span>
+                  <select name="operator" required>
+                    <option value="">Select operator</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>3 TYPE</span>
+                  <select name="type" required>
+                    <option value="">Select type</option>
+                    <option>Data</option>
+                    <option>Voice</option>
+                    <option>Bundle</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>4 PAY</span>
+                  <select name="paymentMethod" required>
+                    <option value="">Choose payment</option>
+                    <option>Wallet</option>
+                    <option>Card</option>
+                    <option>Bank Transfer</option>
+                  </select>
+                </label>
+                <label class="form-field">
+                  <span>Amount</span>
+                  <input type="number" name="amount" placeholder="Enter amount" min="1" required />
+                </label>
+                <label class="form-field form-field--full">
+                  <span>Enter Phone Number</span>
+                  <input type="text" name="phone" placeholder="Enter the number without the country code" required />
+                </label>
+              </div>
+              <div class="hero-actions">
+                <button class="btn btn-secondary" type="button" id="airtime-add-to-cart">Add to cart</button>
+                <button class="btn btn-primary" type="submit">Continue →</button>
+              </div>
+              <div class="status-message"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Country coverage</p>
+            <h2>Recharge destinations with live flags</h2>
+            <p>Browse all supported airtime countries and select the destination you want to top up.</p>
+          </div>
+          <div class="country-grid" id="airtime-country-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container feature-grid">
+          <article class="feature-card">
+            <h3>160+ countries</h3>
+            <p>Reach mobile users across global destinations with premium coverage.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Secure checkout</h3>
+            <p>Your payment is protected and processed through the platform checkout.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Instant delivery</h3>
+            <p>Top-ups and transfers are completed quickly for a smooth customer experience.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container two-column-panel">
+          <div class="panel-copy">
+            <p class="eyebrow">Why customers trust us</p>
+            <h2>A premium experience for everyday recharges and urgent transfers.</h2>
+            <p>From travelers topping up on arrival to families sending support back home, KT Refill keeps every recharge clear, fast and reliable.</p>
+            <ul class="check-list">
+              <li>Real-time country and operator selection</li>
+              <li>Fast confirmation and transparent order tracking</li>
+              <li>Friendly support for every step of the journey</li>
+            </ul>
+          </div>
+          <div class="panel-visual">
+            <div class="panel-glow"></div>
+            <div class="panel-card">
+              <span class="eyebrow">Live support</span>
+              <h3>24/7 recharge assistance</h3>
+              <p>Our team is ready to support your order from start to finish.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./ktrefill-theme/script.js"></script>
+  </body>
+</html>
