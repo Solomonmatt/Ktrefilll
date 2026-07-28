@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KT Refill Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./ktrefill-theme/style.css?v=20260726" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="./index.html"><img src="./ktrefill-theme/images/logo.webp" alt="KT Refill Logo" class="logo-img" /></a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <ul>
+            <li><a href="./buy-airtime.html">Buy Airtime</a></li>
+            <li><a href="./buy-gift-card.html">Buy GiftCard</a></li>
+            <li><a href="./physical-sim.html">Physical sim card</a></li>
+            <li><a href="./carrier-esim.html">Carrier ESIM</a></li>
+            <li><a href="./order-tracking.html">Order Tracking</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <div class="profile-dropdown">
+            <button type="button" class="profile-toggle" aria-expanded="false">
+              <span class="profile-avatar" aria-hidden="true">KR</span>
+              <span class="profile-name">Guest</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="profile-menu" role="menu">
+              <div class="profile-card">
+                <p class="profile-name">Guest User</p>
+                <p class="profile-email">guest@ktrefill.local</p>
+              </div>
+              <a href="./order-tracking.html">Orders</a>
+              <button class="profile-logout">Logout</button>
+            </div>
+          </div>
+          <a href="./cart.html" class="cart-link" aria-label="Shopping cart">
+            <svg class="cart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main data-dashboard-summary>
+      <section class="section dashboard-hero">
+        <div class="container dashboard-hero-card">
+          <div>
+            <p class="eyebrow">Account Overview</p>
+            <h1>Welcome back, <span class="dashboard-welcome-name">Traveler</span></h1>
+            <p class="dashboard-welcome-copy">Your dashboard is loading the latest orders, wallet status, and support insights.</p>
+            <div class="dashboard-hero-actions">
+              <a href="./buy-airtime.html" class="btn btn-primary">Buy Airtime</a>
+              <a href="./buy-gift-card.html" class="btn btn-secondary">Buy Gift Card</a>
+              <button id="dashboard-logout" class="btn btn-secondary">Logout</button>
+            </div>
+          </div>
+          <div class="dashboard-hero-summary">
+            <div class="dashboard-metric">
+              <span>Signed in as</span>
+              <strong class="dashboard-welcome-name">Traveller</strong>
+            </div>
+            <div class="dashboard-metric">
+              <span>Last login</span>
+              <strong class="dashboard-last-login">—</strong>
+            </div>
+            <div class="dashboard-metric">
+              <span>Device type</span>
+              <strong class="dashboard-last-session">Secure session</strong>
+            </div>
+            <div class="dashboard-metric dashboard-security-metric">
+              <span>Account security</span>
+              <strong class="dashboard-login-location">—</strong>
+              <small class="dashboard-login-ip">IP: —</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dashboard-summary-grid">
+        <div class="container">
+          <article class="dashboard-card dashboard-card-highlight dashboard-wallet-card">
+            <div class="dashboard-card-header">
+              <div>
+                <p class="eyebrow">Wallet balance</p>
+                <h3>Available balance</h3>
+              </div>
+              <span class="dashboard-chip">Live</span>
+            </div>
+            <div class="dashboard-balance-row">
+              <p class="dashboard-balance-value" data-stat="balance">$1,240.00</p>
+              <button type="button" class="dashboard-balance-toggle" data-balance-toggle aria-label="Hide balance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <p class="dashboard-balance-copy">Spend instantly on airtime, gift cards, and eSIMs with a premium, fast-moving account experience.</p>
+            <div class="dashboard-wallet-actions">
+              <button type="button" class="btn btn-primary" data-add-money>Add money</button>
+              <a href="./buy-airtime.html" class="btn btn-secondary">Top up</a>
+              <a href="./buy-gift-card.html" class="btn btn-secondary">Gift card</a>
+            </div>
+          </article>
+          <article class="dashboard-card dashboard-stat-card">
+            <div class="dashboard-stat-icon">📦</div>
+            <div>
+              <h3>Active orders</h3>
+              <p class="dashboard-stat-value" data-stat="active-orders">0</p>
+            </div>
+          </article>
+          <article class="dashboard-card dashboard-stat-card">
+            <div class="dashboard-stat-icon">✅</div>
+            <div>
+              <h3>Completed</h3>
+              <p class="dashboard-stat-value" data-stat="completed">0</p>
+            </div>
+          </article>
+          <article class="dashboard-card dashboard-stat-card">
+            <div class="dashboard-stat-icon">💬</div>
+            <div>
+              <h3>Support</h3>
+              <p class="dashboard-stat-value" data-stat="support">24/7 live help</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section dashboard-activity-grid">
+        <div class="container dashboard-section-grid">
+          <article class="dashboard-card dashboard-card-full">
+            <div class="dashboard-card-header">
+              <div>
+                <p class="eyebrow">Recent Activity</p>
+                <h2>Latest orders and deliveries</h2>
+              </div>
+              <a href="./order-tracking.html" class="btn btn-secondary">Track orders</a>
+            </div>
+            <ul class="dashboard-list"></ul>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+
+    <div class="wallet-modal" id="wallet-modal" hidden>
+      <div class="wallet-modal-backdrop" data-close-wallet-modal></div>
+      <div class="wallet-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="wallet-modal-title">
+        <div class="wallet-modal-header">
+          <div>
+            <p class="eyebrow">Add funds</p>
+            <h3 id="wallet-modal-title">Add money to your wallet</h3>
+          </div>
+          <button type="button" class="wallet-modal-close" data-close-wallet-modal aria-label="Close add money dialog">✕</button>
+        </div>
+        <p class="wallet-modal-copy">Top up your wallet in seconds and keep buying airtime, gift cards, and eSIMs without interruption.</p>
+        <form class="wallet-modal-form" data-wallet-form>
+          <label>
+            <span>Amount</span>
+            <input type="number" name="amount" min="1" step="1" placeholder="Enter amount" required />
+          </label>
+          <label>
+            <span>Payment method</span>
+            <select name="paymentMethod" required>
+              <option value="">Choose payment</option>
+              <option value="Card">Card</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+              <option value="Wallet">Wallet</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-primary">Add funds</button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand" href="./index.html">KT REFILL</a>
+          <p>Professional digital services for seamless global connectivity.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./ktrefill-theme/script.js"></script>
+  </body>
+</html>

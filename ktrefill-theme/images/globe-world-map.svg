@@ -1,0 +1,48 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 570) rotate(90) scale(470)">
+      <stop stop-color="#F0C468" stop-opacity="0.42"/>
+      <stop offset="0.4" stop-color="#72C8FF" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#0A0F1F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="goldStroke" x1="239" y1="189" x2="844" y2="958" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7D184"/>
+      <stop offset="1" stop-color="#C48A2E"/>
+    </linearGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="600" cy="570" r="345" fill="url(#bgGlow)"/>
+
+  <g opacity="0.7">
+    <path d="M260 385C284 334 327 301 380 277C452 244 535 238 607 252C686 267 759 297 801 356C828 394 843 447 838 494C832 544 800 597 760 632C718 670 669 707 604 713C531 720 451 705 398 673C347 643 302 596 281 540C264 496 255 446 260 385Z" stroke="url(#goldStroke)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M394 289C418 344 431 395 425 469C420 538 397 582 356 620" stroke="url(#goldStroke)" stroke-width="10" stroke-linecap="round" opacity="0.6"/>
+    <path d="M561 267C558 333 566 403 583 467C601 532 637 579 695 615" stroke="url(#goldStroke)" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+    <path d="M577 427C630 408 690 413 743 434" stroke="url(#goldStroke)" stroke-width="9" stroke-linecap="round" opacity="0.5"/>
+    <path d="M465 523C505 507 551 501 596 505" stroke="url(#goldStroke)" stroke-width="9" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <g filter="url(#softGlow)">
+    <path d="M226 584C332 523 444 492 548 499C645 505 726 535 798 596" stroke="#F0C468" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+    <path d="M314 362C401 318 495 302 591 313C692 324 768 364 823 421" stroke="#70D1FF" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+    <circle cx="226" cy="584" r="9" fill="#F0C468"/>
+    <circle cx="314" cy="362" r="8" fill="#70D1FF"/>
+    <circle cx="548" cy="499" r="10" fill="#F0C468"/>
+    <circle cx="798" cy="596" r="9" fill="#70D1FF"/>
+    <circle cx="823" cy="421" r="8" fill="#F0C468"/>
+  </g>
+
+  <g opacity="0.82">
+    <path d="M512 152L530 170L541 191L533 216L507 223L492 203L497 175L512 152Z" fill="#F0C468" fill-opacity="0.8"/>
+    <path d="M739 267L764 286L785 319L776 350L739 360L711 334L712 294L739 267Z" fill="#72C8FF" fill-opacity="0.8"/>
+    <path d="M672 734L686 753L701 781L692 805L667 809L651 789L651 761L672 734Z" fill="#F0C468" fill-opacity="0.8"/>
+  </g>
+
+  <circle cx="600" cy="570" r="355" stroke="rgba(240,196,104,0.4)" stroke-width="2"/>
+</svg>
